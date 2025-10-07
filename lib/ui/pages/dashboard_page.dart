@@ -1,6 +1,8 @@
 import 'package:abs/constant/dimension.dart';
+import 'package:abs/constant/sport_category.dart';
 import 'package:abs/constant/static_widget.dart';
 import 'package:abs/models/abs_menu.dart';
+import 'package:abs/ui/controller/navigation/menus.dart';
 import 'navbar.dart';
 import 'package:abs/ui/provider/provider.dart';
 import 'package:flutter/material.dart';
@@ -52,44 +54,82 @@ class DashboardPage extends ConsumerWidget {
                   crossAxisSpacing: 16,
                   children: [
                     _SportCard(
-                      title: 'BADMINTON',
+                      title: SportCategory.padelName,
                       icon: Icons.sports_tennis,
-                      onTap: () {},
+                      onTap: () {
+                        ref.read(sportCategoryIdProvider.notifier).state =
+                            SportCategory.padel;
+                        ref.read(sportCategoryNameProvider.notifier).state =
+                            SportCategory.padelName;
+                        final sportId = ref.watch(sportCategoryIdProvider);
+                        debugPrint("Sport id terpilih ${sportId.toString()}");
+                        Menus.sportActivity.go(context, ref);
+                      },
                     ),
                     _SportCard(
-                      title: 'PADEL',
-                      icon: Icons.sports_tennis,
-                      onTap: () {},
+                      title: SportCategory.sepakBolaName,
+                      icon: Icons.sports_soccer,
+                      onTap: () {
+                        ref.read(sportCategoryIdProvider.notifier).state =
+                            SportCategory.sepakBola;
+                        ref.read(sportCategoryNameProvider.notifier).state =
+                            SportCategory.sepakBolaName;
+                        final sportId = ref.watch(sportCategoryIdProvider);
+                        debugPrint("Sport id terpilih ${sportId.toString()}");
+                        Menus.sportActivity.go(context, ref);
+                      },
                     ),
                     _SportCard(
-                      title: 'BASKET',
+                      title: SportCategory.basketBallName,
                       icon: Icons.sports_basketball,
-                      onTap: () {},
+                      onTap: () {
+                        ref.read(sportCategoryIdProvider.notifier).state =
+                            SportCategory.basketBall;
+                        ref.read(sportCategoryNameProvider.notifier).state =
+                            SportCategory.basketBallName;
+                        final sportId = ref.watch(sportCategoryIdProvider);
+                        debugPrint("Sport id terpilih ${sportId.toString()}");
+                        Menus.sportActivity.go(context, ref);
+                      },
                     ),
                     _SportCard(
-                      title: 'SWIM',
-                      icon: Icons.pool,
-                      onTap: () {},
+                      title: SportCategory.futsalName,
+                      icon: Icons.sports_golf_outlined,
+                      onTap: () {
+                        ref.read(sportCategoryIdProvider.notifier).state =
+                            SportCategory.futsal;
+                        ref.read(sportCategoryNameProvider.notifier).state =
+                            SportCategory.futsalName;
+                        final sportId = ref.watch(sportCategoryIdProvider);
+                        debugPrint("Sport id terpilih ${sportId.toString()}");
+                        Menus.sportActivity.go(context, ref);
+                      },
                     ),
                     _SportCard(
-                      title: 'RUN',
-                      icon: Icons.directions_run,
-                      onTap: () {},
-                    ),
-                    _SportCard(
-                      title: 'TENNIS',
+                      title: SportCategory.buluTangkisName,
                       icon: Icons.sports_tennis,
-                      onTap: () {},
+                      onTap: () {
+                        ref.read(sportCategoryIdProvider.notifier).state =
+                            SportCategory.buluTangkis;
+                        ref.read(sportCategoryNameProvider.notifier).state =
+                            SportCategory.buluTangkisName;
+                        final sportId = ref.watch(sportCategoryIdProvider);
+                        debugPrint("Sport id terpilih ${sportId.toString()}");
+                        Menus.sportActivity.go(context, ref);
+                      },
                     ),
                     _SportCard(
-                      title: 'BOXING',
-                      icon: Icons.sports_mma,
-                      onTap: () {},
-                    ),
-                    _SportCard(
-                      title: 'YOGA',
-                      icon: Icons.self_improvement,
-                      onTap: () {},
+                      title: SportCategory.hockeyName,
+                      icon: Icons.sports_hockey,
+                      onTap: () {
+                        ref.read(sportCategoryIdProvider.notifier).state =
+                            SportCategory.hockey;
+                        ref.read(sportCategoryNameProvider.notifier).state =
+                            SportCategory.hockeyName;
+                        final sportId = ref.watch(sportCategoryIdProvider);
+                        debugPrint("Sport id terpilih ${sportId.toString()}");
+                        Menus.sportActivity.go(context, ref);
+                      },
                     ),
                   ],
                 ),

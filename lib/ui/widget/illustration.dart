@@ -35,4 +35,5 @@ class Illustration {
   );
 
   static final registrasi = Lottie.asset('/assets/json/profile.json');
+  static final sportActivity = Lottie.asset('/assets/json/sports.json');
 }

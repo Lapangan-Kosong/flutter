@@ -6,6 +6,7 @@ import 'package:abs/ui/pages/profil_page.dart';
 import 'package:abs/ui/pages/registration_page.dart';
 import 'package:abs/ui/pages/settings_page.dart';
 import 'package:abs/ui/pages/splash_page.dart';
+import 'package:abs/ui/pages/sport_activity_page.dart';
 import 'package:abs/ui/pages/unknown_page.dart';
 import 'package:flutter/material.dart';
 
@@ -22,6 +23,7 @@ class Routes {
   static const String daftarPegawai = '/daftarPegawai';
   // static const String profil = '/profil';
   static const String registrasi = '/registrasi';
+  static const String sportActivity = '/sportActivity';
 
   static const List<String> allRoutes = [
     splash,
@@ -49,6 +51,7 @@ class Routes {
       Routes.dashboard: (ctx) => const DashboardPage(),
       Routes.profile: (ctx) => ProfilPage(),
       Routes.registrasi: (ctx) => const RegistrationPage(),
+      Routes.sportActivity: (ctx) => const SportActivityPage(),
     };
 
     WidgetBuilder? routeBuilder = routes[settings.name];

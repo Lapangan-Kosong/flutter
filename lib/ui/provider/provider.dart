@@ -1,12 +1,11 @@
 import 'dart:io';
 
-import 'package:abs/models/activity/activity.dart';
 import 'package:abs/models/activity/activity_list_data.dart';
 import 'package:abs/models/client_config.dart';
 import 'package:abs/models/abs_menu.dart';
 import 'package:abs/models/login/logged_in.dart';
 import 'package:abs/models/login/me.dart';
-import 'package:abs/models/login/user.dart';
+import 'package:abs/models/sport_activities/sport_activities.dart';
 import 'package:abs/repositories/api_repository.dart';
 import 'package:abs/ui/controller/abs_menu_controller.dart';
 import 'package:abs/ui/controller/client_config_controller.dart';
@@ -17,11 +16,9 @@ import 'package:abs/utils/preferences.dart';
 import 'package:dio/dio.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:package_info_plus/package_info_plus.dart';
-import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 const timeoutDuration = Duration(seconds: 5);
 
@@ -117,3 +114,33 @@ final pagedActivityProvider =
     rethrow;
   }
 });
+
+final sportCategoryIdProvider = StateProvider<int>((ref) => 0);
+final sportCategoryNameProvider = StateProvider<String>((ref) => "Noname");
+
+final pagedSportActivityProvider =
+    FutureProvider.family<List<SportActivity>?, PagedParams>(
+        (ref, pagedParams) async {
+  try {
+    await Future.delayed(Duration(seconds: 5));
+    final api = ref.watch(apiProvider);
+    final response =
+        await api.sportActivity(pagedParams.id, page: pagedParams.page);
+    return response;
+  } catch (e) {
+    rethrow;
+  }
+});
+
+class PagedParams {
+  final int id;
+  final int page;
+  PagedParams(this.id, this.page);
+
+  @override
+  bool operator ==(Object other) =>
+      other is PagedParams && other.id == id && other.page == page;
+
+  @override
+  int get hashCode => Object.hash(id, page);
+}

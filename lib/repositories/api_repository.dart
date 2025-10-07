@@ -8,6 +8,9 @@ import 'package:abs/models/login/me.dart';
 import 'package:abs/models/login/me_response.dart';
 import 'package:abs/models/login/refresh_response.dart';
 import 'package:abs/models/login/refreshed_atuh.dart';
+import 'package:abs/models/sport_activities/sport_activities.dart';
+import 'package:abs/models/sport_activities/sport_activities_list_data.dart';
+import 'package:abs/models/sport_categories/sport_categories_list_data.dart';
 import 'package:abs/ui/provider/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -120,6 +123,44 @@ class ApiRepository {
       );
 
       return response.statusCode == 200;
+    } catch (error) {
+      rethrow;
+    }
+  }
+
+  Future<List<SportCategory>?> category() async {
+    try {
+      final query = {
+        'is_paginate': false,
+      };
+      final client = await _ref.read(dioProvider.future);
+      final response = await client.get(
+        '/v1/sport-categories',
+        queryParameters: query,
+      );
+
+      return SportCategoriesListData.fromMap(response.data).result;
+    } catch (error) {
+      rethrow;
+    }
+  }
+
+  Future<List<SportActivity>?> sportActivity(int sportCategoryId,
+      {int? page, int? perPage}) async {
+    try {
+      final query = {
+        'is_paginate': true,
+        'per_page': perPage ?? 10,
+        'page': page ?? 0,
+        'sport_category_id': sportCategoryId
+      };
+      final client = await _ref.read(dioProvider.future);
+      final response = await client.get(
+        '/v1/sport-activities',
+        queryParameters: query,
+      );
+
+      return SportActivitiesListData.fromMap(response.data).result?.data;
     } catch (error) {
       rethrow;
     }

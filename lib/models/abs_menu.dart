@@ -13,6 +13,7 @@ enum AppsMenuId {
   settings,
   // profil,
   registrasi,
+  sportActivity,
 }
 
 class AppsMenu {
