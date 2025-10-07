@@ -8,6 +8,7 @@ import 'package:abs/models/login/me.dart';
 import 'package:abs/models/login/me_response.dart';
 import 'package:abs/models/login/refresh_response.dart';
 import 'package:abs/models/login/refreshed_atuh.dart';
+import 'package:abs/models/register/register.dart';
 import 'package:abs/models/sport_activities/post_sport_activity.dart';
 import 'package:abs/models/sport_activities/sport_activities.dart';
 import 'package:abs/models/sport_activities/sport_activities_list_data.dart';
@@ -69,6 +70,36 @@ class ApiRepository {
       );
       final parsed = LoginResponse.fromMap(response.data,
           statusCode: response.statusCode ?? 0);
+      return parsed;
+    } catch (error) {
+      rethrow;
+    }
+  }
+
+  Future<RegisterResponse?> register({
+    required String email,
+    required String name,
+    required String password,
+    required String c_password,
+    String role = 'user',
+    required String phone_number,
+  }) async {
+    try {
+      final bodyParam = {
+        'email': email,
+        'password': password,
+        'c_password': c_password,
+        'name': name,
+        'role': role,
+        'phone_number': phone_number,
+
+      };
+      final client = await _ref.read(dioProvider.future);
+      final response = await client.post(
+        '/v1/register',
+        data: bodyParam,
+      );
+      final parsed = RegisterResponse.fromMap(response.data);
       return parsed;
     } catch (error) {
       rethrow;
