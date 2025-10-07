@@ -1,4 +1,6 @@
+import 'package:abs/models/paged_params.dart';
 import 'package:abs/models/sport_activities/sport_activities.dart';
+import 'package:abs/ui/controller/navigation/menus.dart';
 import 'package:abs/ui/provider/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -180,6 +182,7 @@ class _SportActivityPageState extends ConsumerState<SportActivityPage> {
         onPressed: () {
           // Navigate to add new sport activity page
           // TODO: Implement navigation to create sport activity page
+          Menus.addSportActivity.go(context, ref);
         },
         backgroundColor: const Color(0xFF1E3A5F),
         child: const Icon(Icons.add, color: Colors.white),

@@ -57,4 +57,10 @@ class Menus {
         route: Routes.sportActivity,
         image: Illustration.sportActivity,
       );
+  static AppsMenu get addSportActivity => AppsMenu(
+        id: AppsMenuId.addSportActivity,
+        title: 'Sport Activities',
+        route: Routes.addSportActivity,
+        image: Illustration.sportActivity,
+      );
 }

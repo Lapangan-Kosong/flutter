@@ -79,7 +79,20 @@ class UserController extends StateNotifier<LoggedIn?> {
         Routes.login,
         (r) => false,
       );
+
+      // Invalidate all providers except prefsProvider
       _ref.invalidate(userProvider);
+      _ref.invalidate(tokenProvider);
+      // _ref.invalidate(dioProvider);
+      // _ref.invalidate(apiProvider);
+      // _ref.invalidate(themeProvider);
+      // _ref.invalidate(menuProvider);
+      _ref.invalidate(profileProvider);
+      _ref.invalidate(tabActiveProvider);
+      _ref.invalidate(pagedActivityProvider);
+      _ref.invalidate(sportCategoryIdProvider);
+      _ref.invalidate(sportCategoryNameProvider);
+      _ref.invalidate(pagedSportActivityProvider);
     } catch (error) {
       rethrow;
     }

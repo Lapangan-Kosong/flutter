@@ -5,6 +5,7 @@ import 'package:abs/models/client_config.dart';
 import 'package:abs/models/abs_menu.dart';
 import 'package:abs/models/login/logged_in.dart';
 import 'package:abs/models/login/me.dart';
+import 'package:abs/models/paged_params.dart';
 import 'package:abs/models/sport_activities/sport_activities.dart';
 import 'package:abs/repositories/api_repository.dart';
 import 'package:abs/ui/controller/abs_menu_controller.dart';
@@ -131,16 +132,3 @@ final pagedSportActivityProvider =
     rethrow;
   }
 });
-
-class PagedParams {
-  final int id;
-  final int page;
-  PagedParams(this.id, this.page);
-
-  @override
-  bool operator ==(Object other) =>
-      other is PagedParams && other.id == id && other.page == page;
-
-  @override
-  int get hashCode => Object.hash(id, page);
-}

@@ -8,6 +8,7 @@ import 'package:abs/models/login/me.dart';
 import 'package:abs/models/login/me_response.dart';
 import 'package:abs/models/login/refresh_response.dart';
 import 'package:abs/models/login/refreshed_atuh.dart';
+import 'package:abs/models/sport_activities/post_sport_activity.dart';
 import 'package:abs/models/sport_activities/sport_activities.dart';
 import 'package:abs/models/sport_activities/sport_activities_list_data.dart';
 import 'package:abs/models/sport_categories/sport_categories_list_data.dart';
@@ -161,6 +162,29 @@ class ApiRepository {
       );
 
       return SportActivitiesListData.fromMap(response.data).result?.data;
+    } catch (error) {
+      rethrow;
+    }
+  }
+
+  Future<dynamic> postSportActivity({required PostSportActivity post}) async {
+    try {
+      final client = await _ref.read(dioProvider.future);
+      final headers = {...client.options.headers};
+      headers[HttpHeaders.contentTypeHeader] = ContentType.json.value;
+
+      final newClient = client.clone(
+        options: client.options.copyWith(
+          headers: headers,
+        ),
+      );
+
+      final response = await newClient.post(
+        '/v1/sport-activities/create',
+        data: post.toMap(),
+      );
+
+      return response.statusCode == 200;
     } catch (error) {
       rethrow;
     }

@@ -1,5 +1,6 @@
 import 'package:abs/ui/pages/activity_page.dart';
 import 'package:abs/ui/pages/add_activity_page.dart';
+import 'package:abs/ui/pages/add_sport_activity_page.dart';
 import 'package:abs/ui/pages/dashboard_page.dart';
 import 'package:abs/ui/pages/login_page.dart';
 import 'package:abs/ui/pages/profil_page.dart';
@@ -24,6 +25,7 @@ class Routes {
   // static const String profil = '/profil';
   static const String registrasi = '/registrasi';
   static const String sportActivity = '/sportActivity';
+  static const String addSportActivity = '/sportActivity/add';
 
   static const List<String> allRoutes = [
     splash,
@@ -52,6 +54,7 @@ class Routes {
       Routes.profile: (ctx) => ProfilPage(),
       Routes.registrasi: (ctx) => const RegistrationPage(),
       Routes.sportActivity: (ctx) => const SportActivityPage(),
+      Routes.addSportActivity: (ctx) => const AddSportActivityPage(),
     };
 
     WidgetBuilder? routeBuilder = routes[settings.name];
