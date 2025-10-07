@@ -1,0 +1,59 @@
+name: abs
+description: "A new Flutter project."
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.6.1
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.8
+  flutter_riverpod: ^2.6.1
+  riverpod_annotation: ^2.6.1
+  shared_preferences: ^2.5.2
+  intl: ^0.20.2
+  dio: ^5.8.0+1
+  firebase_messaging: ^15.2.6
+  google_maps_flutter: ^2.11.0
+  maps_toolkit: ^3.1.0
+  geolocator: ^13.0.3
+  flutter_udid: ^4.0.0
+  datetime_setting: ^2.0.3
+  package_info_plus: ^8.3.0
+  infinite_scroll_pagination: ^4.0.0
+  lottie: ^3.3.1
+  extended_tabs: ^5.0.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^5.0.0
+  riverpod_generator: ^2.6.5
+  build_runner: ^2.4.15
+  custom_lint: ^0.7.5
+  riverpod_lint: ^2.6.5
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/
+    - assets/fonts/
+    - assets/json/
+    - assets/images/
+    - assets/images/menu/
+  
+  fonts:
+    - family: Product
+      fonts:
+        - asset: assets/fonts/product-sans-regular.ttf
+        - asset: assets/fonts/product-sans-bold.ttf
+        - asset: assets/fonts/product-sans-italic.ttf
+    - family: NeoSans
+      fonts:
+        - asset: assets/fonts/neo-sans-regular.otf
+        - asset: assets/fonts/neo-sans-bold.otf
