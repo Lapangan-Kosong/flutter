@@ -122,6 +122,7 @@ final sportCategoryNameProvider = StateProvider<String>((ref) => "Noname");
 final pagedSportActivityProvider =
     FutureProvider.family<List<SportActivity>?, PagedParams>(
         (ref, pagedParams) async {
+  ref.keepAlive();
   try {
     await Future.delayed(Duration(seconds: 5));
     final api = ref.watch(apiProvider);

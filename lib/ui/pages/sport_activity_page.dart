@@ -22,6 +22,7 @@ class _SportActivityPageState extends ConsumerState<SportActivityPage> {
   @override
   void initState() {
     super.initState();
+    // ref.invalidate(pagedSportActivityProvider);
     _scrollController.addListener(_onScroll);
     _loadInitialData();
   }
@@ -106,6 +107,7 @@ class _SportActivityPageState extends ConsumerState<SportActivityPage> {
 
   @override
   Widget build(BuildContext context) {
+    ref.invalidate(pagedSportActivityProvider);
     final sportCategoryId = ref.watch(sportCategoryIdProvider);
     final sportCategoryName = ref.watch(sportCategoryNameProvider);
     final params = PagedParams(sportCategoryId, 1);
@@ -117,66 +119,71 @@ class _SportActivityPageState extends ConsumerState<SportActivityPage> {
         title: Text(sportCategoryName),
         backgroundColor: const Color(0xFF1E3A5F),
         foregroundColor: Colors.white,
+        actions: [
+          IconButton(
+            onPressed: _onRefresh,
+            icon: const Icon(Icons.refresh),
+            tooltip: "Refresh data",
+          )
+        ],
       ),
-      body: SafeArea(
-        child: RefreshIndicator(
-          onRefresh: _onRefresh,
-          child: _activities.isEmpty
-              ? initialData.when(
-                  data: (activities) {
-                    if (activities == null || activities.isEmpty) {
-                      return const Center(
-                        child: Text(
-                          'No activities found',
-                          style: TextStyle(fontSize: 16, color: Colors.grey),
-                        ),
-                      );
-                    }
-                    return const SizedBox();
-                  },
-                  loading: () => const Center(
-                    child: CircularProgressIndicator(),
-                  ),
-                  error: (error, stack) => Center(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Icon(Icons.error_outline,
-                            size: 48, color: Colors.red),
-                        const SizedBox(height: 16),
-                        Text(
-                          'Error: $error',
-                          style: const TextStyle(color: Colors.red),
-                          textAlign: TextAlign.center,
-                        ),
-                        const SizedBox(height: 16),
-                        ElevatedButton(
-                          onPressed: _onRefresh,
-                          child: const Text('Retry'),
-                        ),
-                      ],
-                    ),
-                  ),
-                )
-              : ListView.builder(
-                  controller: _scrollController,
-                  padding: const EdgeInsets.all(16),
-                  itemCount: _activities.length + (_hasMoreData ? 1 : 0),
-                  itemBuilder: (context, index) {
-                    if (index == _activities.length) {
-                      return const Center(
-                        child: Padding(
-                          padding: EdgeInsets.all(16.0),
-                          child: CircularProgressIndicator(),
-                        ),
-                      );
-                    }
-
-                    final activity = _activities[index];
-                    return _ActivityCard(activity: activity);
-                  },
+      body: RefreshIndicator(
+        onRefresh: _onRefresh,
+        child: _activities.isEmpty
+            ? initialData.when(
+                data: (activities) {
+                  if (activities == null || activities.isEmpty) {
+                    return const Center(
+                      child: Text(
+                        'No activities found',
+                        style: TextStyle(fontSize: 16, color: Colors.grey),
+                      ),
+                    );
+                  }
+                  return const SizedBox();
+                },
+                loading: () => const Center(
+                  child: CircularProgressIndicator(),
                 ),
-        ),
+                error: (error, stack) => Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Icon(Icons.error_outline,
+                          size: 48, color: Colors.red),
+                      const SizedBox(height: 16),
+                      Text(
+                        'Error: $error',
+                        style: const TextStyle(color: Colors.red),
+                        textAlign: TextAlign.center,
+                      ),
+                      const SizedBox(height: 16),
+                      ElevatedButton(
+                        onPressed: _onRefresh,
+                        child: const Text('Retry'),
+                      ),
+                    ],
+                  ),
+                ),
+              )
+            : ListView.builder(
+                controller: _scrollController,
+                padding: const EdgeInsets.all(16),
+                itemCount: _activities.length + (_hasMoreData ? 1 : 0),
+                itemBuilder: (context, index) {
+                  if (index == _activities.length) {
+                    return const Center(
+                      child: Padding(
+                        padding: EdgeInsets.all(16.0),
+                        child: CircularProgressIndicator(),
+                      ),
+                    );
+                  }
+
+                  final activity = _activities[index];
+                  return _ActivityCard(activity: activity);
+                },
+              ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {

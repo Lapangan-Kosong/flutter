@@ -25,8 +25,10 @@ class _SplashPageState extends ConsumerState<SplashPage> {
 
       // debugPrint('v1/auth => $response');
 
+      final userLogin = ref.read(userProvider);
+
       go(
-        user?.token != null && user?.token != ''
+        user?.token != null && user?.token != '' && userLogin != null
             ? Menus.dashboard
             : Menus.login,
       );
