@@ -63,4 +63,10 @@ class Menus {
         route: Routes.addSportActivity,
         image: Illustration.sportActivity,
       );
+  static AppsMenu get updateProfile => AppsMenu(
+        id: AppsMenuId.updateProfile,
+        title: 'Update Profil',
+        route: Routes.updateProfile,
+        image: null,
+      );
 }

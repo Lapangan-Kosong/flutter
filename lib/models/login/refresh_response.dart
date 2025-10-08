@@ -14,9 +14,9 @@ class RefreshAuthResponse {
       'kode_unit': 1,
       'nama_unit': 'Kantorku',
       'name': 'Indri Mayasari, S.Sos.',
-      'nip': 198407192007012004,
+      'nip': '198407192007012004',
       'role': 'Pegawai',
-      'username': 198407192007012004,
+      'username': '198407192007012004',
     },
   };
 

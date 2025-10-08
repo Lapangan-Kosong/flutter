@@ -4,6 +4,7 @@ import 'package:abs/ui/pages/add_sport_activity_page.dart';
 import 'package:abs/ui/pages/dashboard_page.dart';
 import 'package:abs/ui/pages/login_page.dart';
 import 'package:abs/ui/pages/profil_page.dart';
+import 'package:abs/ui/pages/update_profile_page.dart';
 import 'package:abs/ui/pages/registration_page.dart';
 import 'package:abs/ui/pages/settings_page.dart';
 import 'package:abs/ui/pages/splash_page.dart';
@@ -16,6 +17,7 @@ class Routes {
   static const String login = '/login';
   static const String dashboard = '/dashboard';
   static const String profile = '/profile';
+  static const String updateProfile = '/profile/update';
   static const String activity = '/activity';
   static const String addActivity = '/addActivity';
   static const String presensi = '/presensi';
@@ -52,6 +54,7 @@ class Routes {
       Routes.login: (ctx) => const LoginPage(),
       Routes.dashboard: (ctx) => const DashboardPage(),
       Routes.profile: (ctx) => ProfilPage(),
+      Routes.updateProfile: (ctx) => const UpdateProfilePage(),
       Routes.registrasi: (ctx) => const RegistrationPage(),
       Routes.sportActivity: (ctx) => const SportActivityPage(),
       Routes.addSportActivity: (ctx) => const AddSportActivityPage(),

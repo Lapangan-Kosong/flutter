@@ -2,6 +2,7 @@ import 'package:abs/constant/dimension.dart';
 import 'package:abs/constant/static_widget.dart';
 import 'package:abs/models/abs_menu.dart';
 import 'package:abs/models/login/me.dart';
+import 'package:abs/ui/controller/navigation/menus.dart';
 import 'package:abs/ui/pages/navbar.dart';
 import 'package:abs/ui/provider/provider.dart';
 import 'package:abs/ui/widget/common_message.dart';
@@ -91,7 +92,13 @@ class _PegawaiPage extends ConsumerWidget {
 
     return Material(
       child: InkWell(
-        onTap: () {},
+        onTap: () {
+          Menus.updateProfile.go(
+            context,
+            ref,
+            replace: false,
+          );
+        },
         borderRadius: Dimensions.commonCircularCorner,
         child: Container(
           child: Padding(

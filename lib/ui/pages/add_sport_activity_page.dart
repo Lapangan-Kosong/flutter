@@ -202,7 +202,7 @@ class AddSportActivityPage extends ConsumerWidget {
                         contentPadding:
                             EdgeInsets.symmetric(horizontal: 16, vertical: 12),
                       ),
-                      initialValue: post.cityId,
+                      // initialValue: post.cityId,
                       items: const [
                         DropdownMenuItem(
                           value: 3171,

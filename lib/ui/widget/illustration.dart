@@ -34,6 +34,6 @@ class Illustration {
     fit: BoxFit.contain,
   );
 
-  static final registrasi = Lottie.asset('/assets/json/profile.json');
-  static final sportActivity = Lottie.asset('/assets/json/sports.json');
+  static final registrasi = Lottie.asset('assets/json/profile.json');
+  static final sportActivity = Lottie.asset('assets/json/sports.json');
 }
