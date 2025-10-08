@@ -107,7 +107,7 @@ class _SportActivityPageState extends ConsumerState<SportActivityPage> {
 
   @override
   Widget build(BuildContext context) {
-    ref.invalidate(pagedSportActivityProvider);
+    // ref.invalidate(pagedSportActivityProvider);
     final sportCategoryId = ref.watch(sportCategoryIdProvider);
     final sportCategoryName = ref.watch(sportCategoryNameProvider);
     final params = PagedParams(sportCategoryId, 1);
