@@ -1,6 +1,5 @@
 import 'package:abs/models/client_config.dart';
 import 'package:abs/models/login/logged_in.dart';
-import 'package:abs/models/login/user.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

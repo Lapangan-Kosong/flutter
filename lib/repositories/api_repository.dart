@@ -15,7 +15,6 @@ import 'package:abs/models/sport_activities/sport_activities.dart';
 import 'package:abs/models/sport_activities/sport_activities_list_data.dart';
 import 'package:abs/models/sport_categories/sport_categories_list_data.dart';
 import 'package:abs/ui/provider/provider.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 
@@ -93,7 +92,6 @@ class ApiRepository {
         'name': name,
         'role': role,
         'phone_number': phone_number,
-
       };
       final client = await _ref.read(dioProvider.future);
       final response = await client.post(
@@ -118,7 +116,6 @@ class ApiRepository {
         'email': email,
         'name': name,
         'phone_number': phone_number,
-
       };
       final client = await _ref.read(dioProvider.future);
       final response = await client.post(

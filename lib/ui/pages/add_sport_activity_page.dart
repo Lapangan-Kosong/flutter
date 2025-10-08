@@ -2,10 +2,8 @@ import 'package:abs/constant/dimension.dart';
 import 'package:abs/models/abs_menu.dart';
 import 'package:abs/models/paged_params.dart';
 import 'package:abs/models/sport_activities/post_sport_activity.dart';
-import 'package:abs/ui/controller/navigation/menus.dart';
 import 'package:abs/ui/controller/navigation/routes.dart';
 import 'package:abs/ui/provider/provider.dart';
-import 'package:abs/ui/widget/debug_widget.dart';
 import 'package:abs/ui/widget/illustration.dart';
 import 'package:abs/ui/widget/page_title.dart';
 import 'package:flutter/material.dart';
@@ -59,7 +57,7 @@ class AddSportActivityPage extends ConsumerWidget {
                   image: Illustration.activity,
                 ),
               ),
-              DebugWidget(map: post.toMap()),
+              // DebugWidget(map: post.toMap()),
               Padding(
                 padding: const EdgeInsets.symmetric(
                   horizontal: Dimensions.mediumSize,
@@ -392,7 +390,8 @@ class AddSportActivityPage extends ConsumerWidget {
                           if (result) {
                             // sukses
                             // Invalidate sport activity provider to refresh the list
-                            final sportCategoryId = ref.read(sportCategoryIdProvider);
+                            final sportCategoryId =
+                                ref.read(sportCategoryIdProvider);
                             final params = PagedParams(sportCategoryId, 1);
                             ref.invalidate(pagedSportActivityProvider(params));
 

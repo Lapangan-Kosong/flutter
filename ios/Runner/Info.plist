@@ -47,5 +47,9 @@
 	<true/>
 	<key>FLTEnableImpeller</key>
   	<false/>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>We need your location to determine your province</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>We need your location to determine your province</string>
 </dict>
 </plist>

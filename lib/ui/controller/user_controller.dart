@@ -87,6 +87,7 @@ class UserController extends StateNotifier<LoggedIn?> {
       // _ref.invalidate(apiProvider);
       // _ref.invalidate(themeProvider);
       // _ref.invalidate(menuProvider);
+      _ref.invalidate(provinceProvider);
       _ref.invalidate(profileProvider);
       _ref.invalidate(tabActiveProvider);
       _ref.invalidate(pagedActivityProvider);

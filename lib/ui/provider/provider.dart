@@ -20,6 +20,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:package_info_plus/package_info_plus.dart';
+import 'package:geolocator/geolocator.dart';
+import 'package:geocoding/geocoding.dart';
 
 const timeoutDuration = Duration(seconds: 5);
 
@@ -132,4 +134,27 @@ final pagedSportActivityProvider =
   } catch (e) {
     rethrow;
   }
+});
+
+final provinceProvider = FutureProvider<String?>((ref) async {
+  try {
+    LocationPermission permission = await Geolocator.checkPermission();
+    debugPrint("Current Permission $permission");
+    if (permission == LocationPermission.denied) {
+      permission = await Geolocator.requestPermission();
+      debugPrint("After give Permission $permission");
+    }
+
+    Position position = await Geolocator.getCurrentPosition();
+    debugPrint('Position: ${position.latitude}, ${position.longitude}');
+    List<Placemark> placemarks =
+        await placemarkFromCoordinates(position.latitude, position.longitude);
+
+    debugPrint('Placemarks: ${placemarks.length}'); // Debug
+
+    return placemarks.first.administrativeArea;
+  } catch (e) {
+    debugPrint("Error $e");
+  }
+  return null;
 });

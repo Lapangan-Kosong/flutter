@@ -28,6 +28,8 @@ class DashboardPage extends ConsumerWidget {
     });
 
     final user = ref.watch(userProvider);
+    final provinceAsync = ref.watch(provinceProvider);
+    debugPrint("anda berada di ${provinceAsync.toString()}");
 
     return Scaffold(
       backgroundColor: const Color(0xFFFFFEF0),
@@ -41,11 +43,15 @@ class DashboardPage extends ConsumerWidget {
               Text(
                 'Choose your sport today ${user?.name}!',
                 style: TextStyle(
-                  fontSize: 28,
+                  fontSize: 20,
                   fontWeight: FontWeight.bold,
                   color: const Color(0xFF1E3A5F),
                 ),
               ),
+              provinceAsync.when(
+                  data: (province) => Text('You are at $province'),
+                  loading: () => CircularProgressIndicator(),
+                  error: (err, stack) => Text('You are at Unknown Province')),
               const SizedBox(height: 40),
               Expanded(
                 child: GridView.count(
